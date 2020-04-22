@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/pantry'
+require './lib/ingredient'
 
 class PantryTest < MiniTest::Test
 
@@ -15,6 +16,6 @@ class PantryTest < MiniTest::Test
   end
 
   def test_stock_is_empty_by_default
-    assert_equal Hash.new, @pantry.stock 
+    assert_equal Hash.new, @pantry.stock
   end
 end
