@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/recipe'
 require './lib/ingredient'
+require 'pry'
 
 class RecipeTest < MiniTest::Test
 

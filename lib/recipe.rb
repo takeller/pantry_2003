@@ -1,3 +1,4 @@
+require 'pry'
 class Recipe
 
   attr_reader :name, :ingredients_required
@@ -12,6 +13,12 @@ class Recipe
   end
 
   def ingredients
-    @ingredients_required.keys 
+    @ingredients_required.keys
+  end
+
+  def total_calories
+    @ingredients_required.map do |ingredient, quantity|
+      ingredient.calories * quantity
+    end.sum
   end
 end
