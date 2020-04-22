@@ -8,7 +8,17 @@ class RecipeTest < MiniTest::Test
   def setup
     @ingredient1 = Ingredient.new({name: "Cheese", unit: "C", calories: 100})
     @ingredient2 = Ingredient.new({name: "Macaroni", unit: "oz", calories: 30})
+    @ingredient3 = Ingredient.new({name: "Ground Beef", unit: "oz", calories: 100})
+    @ingredient4 = Ingredient.new({name: "Bun", unit: "g", calories: 75})
     @recipe1 = Recipe.new("Mac and Cheese")
+  end
+
+  def add_ingredients
+    @recipe1.add_ingredient(@ingredient1, 2)
+    @recipe1.add_ingredient(@ingredient2, 8)
+    @recipe2.add_ingredient(@ingredient1, 2)
+    @recipe2.add_ingredient(@ingredient3, 4)
+    @recipe2.add_ingredient(@ingredient4, 1)
   end
 
   def test_it_exists
@@ -24,7 +34,7 @@ class RecipeTest < MiniTest::Test
   end
 
   def test_ingredients_is_empty_by_default
-    assert_equal Array.new, @recipe1.ingredients 
+    assert_equal Array.new, @recipe1.ingredients
   end
 
   def test_add_ingredient
