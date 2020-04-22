@@ -28,6 +28,11 @@ class CookbookTest < MiniTest::Test
     @recipe2.add_ingredient(@ingredient4, 1)
   end
 
+  def add_recipes
+    @cookbook.add_recipe(@recipe1)
+    @cookbook.add_recipe(@recipe2)
+  end
+
   def test_it_has_no_recipes_by_default
     assert_equal Array.new, @cookbook.recipes
   end
@@ -41,7 +46,11 @@ class CookbookTest < MiniTest::Test
 
   def test_ingredients
     add_ingredients
+    add_recipes
     expected = ["Cheese", "Macaroni", "Ground Beef", "Bun"]
+
     assert_equal expected, @cookbook.ingredients
   end
+
+
 end
