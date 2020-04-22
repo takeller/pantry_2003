@@ -52,5 +52,11 @@ class CookbookTest < MiniTest::Test
     assert_equal expected, @cookbook.ingredients
   end
 
+  def test_highest_calorie_meal
+    add_ingredients
+    add_recipes 
+    assert_equal @recipe2, @cookbook.highest_calorie_meal
+  end
+
 
 end
