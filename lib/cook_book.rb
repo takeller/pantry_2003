@@ -24,20 +24,22 @@ class CookBook
     calories_by_recipe.max_by { |recipe, calories| calories }[0]
   end
 
-  # def summary
-  #   # hash of recipes where name => recipe name, details => ingredients hash and total cals for that ingredient
-  #   summary_of_recipes = @recipes.map do |recipe|
-  #     {name: recipe.name,
-  #      details:  {
-  #
-  #      }
-  #     }
-  #     binding.pry
-  #   end
-  # end
+  def summary
+    @recipes.map do |recipe|
+      {name: recipe.name,
+       details:  {
+         ingredients: recipe_ingredient_details(recipe),
+         total_calories: recipe.total_calories
+       }
+      }
+    end
+  end
 
   def recipe_ingredient_details(recipe)
-    recipe.ingredients.map { |ingredient| recipe.ingredient_details(ingredient) }
+    recipe.ingredients.map do  |ingredient|
+      # Sort by calories per ingredient in recipe
+      recipe.ingredient_details(ingredient)
+    end 
   end
 
 end

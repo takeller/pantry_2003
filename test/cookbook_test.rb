@@ -68,8 +68,16 @@ class CookbookTest < MiniTest::Test
 
   def test_summary
     add_ingredients
-    add_recipes
-    expected = [{:name=>"Mac and Cheese", :details=>{:ingredients=>[{:ingredient=>"Macaroni", :amount=>"8 oz"}, {:ingredient=>"Cheese", :amount=>"2 C"}], :total_calories=>440}}, {:name=>"Burger", :details=>{:ingredients=>[{:ingredient=>"Ground Beef", :amount=>"4 oz"}, {:ingredient=>"Bun", :amount=>"100 g"}], :total_calories=>500}}]
+    @cookbook.add_recipe(@recipe1)
+    recipe3 = Recipe.new("Burger")
+    ingredient3 = Ingredient.new(name: "Ground Beef", unit: "oz", calories: 100)
+    ingredient4 = Ingredient.new(name: "Bun", unit: "g", calories: 1)
+    recipe3.add_ingredient(ingredient3, 4)
+    recipe3.add_ingredient(ingredient4, 100)
+    @cookbook.add_recipe(recipe3)
+
+    expected = [{:name=>"Mac and Cheese", :details=>{:ingredients=>[{:ingredient=>"Macaroni", :amount=>"8 oz"}, {:ingredient=>"Cheese", :amount=>"2 C"},  ], :total_calories=>440}},
+    {:name=>"Burger", :details=>{:ingredients=>[{:ingredient=>"Ground Beef", :amount=>"4 oz"}, {:ingredient=>"Bun", :amount=>"100 g"}], :total_calories=>500}}]
 
     assert_equal expected, @cookbook.summary
   end
