@@ -56,6 +56,11 @@ class RecipeTest < MiniTest::Test
     assert_equal [@ingredient1, @ingredient2], @recipe1.ingredients
   end
 
+  def test_ingredient_names
+    add_ingredients 
+    assert_equal ["Cheese", "Macaroni"], @recipe1.ingredient_names
+  end
+
   def test_total_calories
     add_ingredients
     assert_equal 440, @recipe1.total_calories
