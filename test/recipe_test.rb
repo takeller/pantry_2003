@@ -51,6 +51,11 @@ class RecipeTest < MiniTest::Test
     assert_equal expected, @recipe1.ingredients_required
   end
 
+  def test_ingredients
+    add_ingredients
+    assert_equal [@ingredient1, @ingredient2], @recipe1.ingredients
+  end
+
   def test_total_calories
     add_ingredients
     assert_equal 440, @recipe1.total_calories
