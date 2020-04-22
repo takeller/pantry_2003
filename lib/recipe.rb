@@ -24,4 +24,11 @@ class Recipe
       ingredient.calories * quantity
     end.sum
   end
+
+  def ingredient_details(ingredient)
+    {
+      ingredient: ingredient.name,
+      amount: @ingredients_required[ingredient].to_s + " " + ingredient.unit
+    }
+  end
 end

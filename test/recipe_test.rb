@@ -57,7 +57,7 @@ class RecipeTest < MiniTest::Test
   end
 
   def test_ingredient_names
-    add_ingredients 
+    add_ingredients
     assert_equal ["Cheese", "Macaroni"], @recipe1.ingredient_names
   end
 
@@ -65,5 +65,20 @@ class RecipeTest < MiniTest::Test
     add_ingredients
     assert_equal 440, @recipe1.total_calories
     assert_equal 675, @recipe2.total_calories
+  end
+
+  def test_ingredient_details
+    add_ingredients
+    expected1 = {
+      :ingredient => "Macaroni",
+      :amount => "8 oz"
+    }
+    expected2 = {
+      :ingredient => "Cheese",
+      :amount => "2 C"
+    }
+
+    assert_equal expected1, @recipe1.ingredient_details(@ingredient2)
+    assert_equal expected2, @recipe1.ingredient_details(@ingredient1)
   end
 end
