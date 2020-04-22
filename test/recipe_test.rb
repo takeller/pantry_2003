@@ -11,6 +11,7 @@ class RecipeTest < MiniTest::Test
     @ingredient3 = Ingredient.new({name: "Ground Beef", unit: "oz", calories: 100})
     @ingredient4 = Ingredient.new({name: "Bun", unit: "g", calories: 75})
     @recipe1 = Recipe.new("Mac and Cheese")
+    @recipe2 = Recipe.new("Cheese Burger")
   end
 
   def add_ingredients
@@ -47,5 +48,11 @@ class RecipeTest < MiniTest::Test
     }
 
     assert_equal expected, @recipe1.ingredients_required
+  end
+
+  def test_total_calories
+    add_ingredients
+    assert_equal 440, @recipe1.total_calories
+    assert_equal 675, @recipe2.total_calories
   end
 end
