@@ -65,4 +65,19 @@ class CookbookTest < MiniTest::Test
     cookbook1 = CookBook.new
     assert_equal "08-04-1995", cookbook1.date
   end
+
+  def test_summary
+    add_ingredients
+    add_recipes
+    expected = [{:name=>"Mac and Cheese", :details=>{:ingredients=>[{:ingredient=>"Macaroni", :amount=>"8 oz"}, {:ingredient=>"Cheese", :amount=>"2 C"}], :total_calories=>440}}, {:name=>"Burger", :details=>{:ingredients=>[{:ingredient=>"Ground Beef", :amount=>"4 oz"}, {:ingredient=>"Bun", :amount=>"100 g"}], :total_calories=>500}}]
+
+    assert_equal expected, @cookbook.summary
+  end
+
+  def test_recipe_ingredient_details
+    add_ingredients
+    add_recipes
+    expected = [{:ingredient=>"Cheese", :amount=>"2 C"}, {:ingredient=>"Macaroni", :amount=>"8 oz"}, ]
+    assert_equal expected, @cookbook.recipe_ingredient_details(@recipe1)
+  end
 end
