@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/recipe'
 require './lib/ingredient'
+require './lib/pantry'
 require './lib/cook_book'
 
 class CookbookTest < MiniTest::Test
@@ -36,5 +37,11 @@ class CookbookTest < MiniTest::Test
     @cookbook.add_recipe(@recipe2)
     expected = [@recipe1, @recipe2]
     assert_equal expected, @cookbook.recipes
+  end
+
+  def test_ingredients
+    add_ingredients
+    expected = ["Cheese", "Macaroni", "Ground Beef", "Bun"]
+    assert_equal expected, @cookbook.ingredients
   end
 end
